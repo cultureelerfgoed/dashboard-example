@@ -1,6 +1,11 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 from datetime import date, timedelta, datetime
 
+STATE = {
+    'OK': '![#c5f015](https://placehold.co/5x5/c5f015/c5f015.png)',
+    'FAIL': '![#f03c15](https://placehold.co/5x1/f03c15/f03c15.png)',
+}
+
 nde_sparql = SPARQLWrapper('https://datasetregister.netwerkdigitaalerfgoed.nl/sparql')
 nde_sparql.setReturnFormat(JSON)
 
@@ -34,15 +39,13 @@ try:
     set_count_rce = rce_q['results']['bindings'][0]['count']['value']
 
     if set_count_nde == set_count_rce:
-        status = 'OK ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)'
+        status = STATE['OK']
     else:
-        status = 'Niet OK ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)'
+        status = STATE['FAIL']
 
     with open("README.md", "w") as f:
-        f.write(f'## Dataset dashboard, status: {status} <br /> \n')
-        f.write(f'{set_count_nde} datasets op het NDE Datasetregister <br /> \n')
-        f.write(f'{set_count_rce} datasets op de linked data voorziening van de RCE <br /> \n')
-        f.write(f'Voor het laatst gecheckt om {datetime.now():%Y-%m-%d %H:%M.%S} <br /> \n')
+        f.write(f'## Dashboard <br /> \n')
+        f.write(f'{status} [{datetime.now():%Y-%m-%d %H:%M.%S}] {set_count_nde}/{set_count_rce} datasets uit de datacatalog van de RCE beschikbaar op het NDE Datasetregister.  <br /> \n')
         
 except Exception as e:
     print(e)
