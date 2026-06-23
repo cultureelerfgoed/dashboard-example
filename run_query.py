@@ -11,7 +11,6 @@ rce_sparql = SPARQLWrapper(
 )
 rce_sparql.setReturnFormat(JSON)
 
-
 # gets the first 3 geological ages
 # from a Geological Timescale database,
 # via a SPARQL endpoint
@@ -39,21 +38,19 @@ rce_sparql.setQuery('''
 try:
     nde_q = nde_sparql.queryAndConvert()
     set_count_nde = nde_q['results']['bindings'][0]['count']['value']
-    nde_str = f'{set_count_nde} sets op het NDE Datasetregister \n'
-
     rce_q = rce_sparql.queryAndConvert()
     set_count_rce = rce_q['results']['bindings'][0]['count']['value']
-    rce_str = f'{set_count_rce} sets op de linked data voorziening van de RCE \n'
+
+    if set_count_nde == set_count_rce:
+        status = '<span style="color: green;">OK</span> '
+    else:
+        status = '<span style="color: red;">fout</span> '
 
     with open("README.md", "w") as f:
-        f.write('## Dataset dashboard: ')
-        if set_count_nde == set_count_rce:
-            f.write('alles OK \n')
-        else:
-            f.write('fout \n')
-        f.write(nde_str)
-        f.write(rce_str)
-        f.write(f'Checked at {datetime.now()}')
+        f.write(f'## Dataset dashboard, status: {status} <br /> \n')
+        f.write(f'{set_count_nde} datasets op het NDE Datasetregister <br /> \n')
+        f.write(f'{set_count_rce} datasets op de linked data voorziening van de RCE <br /> \n')
+        f.write(f'Checked at {datetime.now()} <br /> \n')
         
 except Exception as e:
     print(e)

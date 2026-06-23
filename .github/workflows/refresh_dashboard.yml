@@ -1,6 +1,9 @@
 name: 'Refresh Dashboard'
 
-on: 
+on:
+  schedule:
+  - cron: '0 15 * * *'
+    timezone: 'Europe/Amsterdam'  
   workflow_dispatch: {}
 
 jobs:
@@ -20,7 +23,6 @@ jobs:
     - name: Get latest datacatalog 
       run: |
         python run_query.py
-
     - name: Check for changes and commit
       run: |
         if [[ -n $(git status -s) ]]; then
