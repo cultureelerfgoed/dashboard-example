@@ -1,5 +1,5 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 
 nde_sparql = SPARQLWrapper(
     'https://datasetregister.netwerkdigitaalerfgoed.nl/sparql'
@@ -53,6 +53,7 @@ try:
             f.write('fout \n')
         f.write(nde_str)
         f.write(rce_str)
+        f.write(f'Checked at {datetime.now()}')
         
 except Exception as e:
     print(e)
