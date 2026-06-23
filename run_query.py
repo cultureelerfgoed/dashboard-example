@@ -1,19 +1,13 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 from datetime import date, timedelta, datetime
 
-nde_sparql = SPARQLWrapper(
-    'https://datasetregister.netwerkdigitaalerfgoed.nl/sparql'
-)
+nde_sparql = SPARQLWrapper('https://datasetregister.netwerkdigitaalerfgoed.nl/sparql')
 nde_sparql.setReturnFormat(JSON)
 
-rce_sparql = SPARQLWrapper(
-    'https://api.linkeddata.cultureelerfgoed.nl/datasets/rce/datacatalog/services/datacatalog/sparql'
-)
+rce_sparql = SPARQLWrapper('https://api.linkeddata.cultureelerfgoed.nl/datasets/rce/datacatalog/services/datacatalog/sparql')
 rce_sparql.setReturnFormat(JSON)
 
-# gets the first 3 geological ages
-# from a Geological Timescale database,
-# via a SPARQL endpoint
+# query to count datasets on nde datasetregister published by rce and read recently
 nde_sparql.setQuery(
     'PREFIX dct: <http://purl.org/dc/terms/>' \
     'PREFIX schema: <https://schema.org/>' \
@@ -25,9 +19,7 @@ nde_sparql.setQuery(
     '} ' 
 )
 
-# gets the first 3 geological ages
-# from a Geological Timescale database,
-# via a SPARQL endpoint
+# query to count datasets in rce catalog
 rce_sparql.setQuery('''
     PREFIX schema: <https://schema.org/>
     SELECT (count(distinct ?dataset) as ?count) WHERE {
@@ -50,7 +42,7 @@ try:
         f.write(f'## Dataset dashboard, status: {status} <br /> \n')
         f.write(f'{set_count_nde} datasets op het NDE Datasetregister <br /> \n')
         f.write(f'{set_count_rce} datasets op de linked data voorziening van de RCE <br /> \n')
-        f.write(f'Checked at {datetime.now():%Y-%m-%d %H:%M.%S} <br /> \n')
+        f.write(f'Voor het laatst gecheckt om {datetime.now():%Y-%m-%d %H:%M.%S} <br /> \n')
         
 except Exception as e:
     print(e)
