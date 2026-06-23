@@ -42,9 +42,9 @@ try:
     set_count_rce = rce_q['results']['bindings'][0]['count']['value']
 
     if set_count_nde == set_count_rce:
-        status = '<span style="color: green;">OK</span> '
+        status = 'OK ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png)'
     else:
-        status = '<span style="color: red;">fout</span> '
+        status = 'Niet OK ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)'
 
     with open("README.md", "w") as f:
         f.write(f'## Dataset dashboard, status: {status} <br /> \n')
