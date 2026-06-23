@@ -2,8 +2,9 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 from datetime import date, timedelta, datetime
 
 STATE = {
-    'OK': '![#c5f015](https://placehold.co/5x5/c5f015/c5f015.png)',
-    'FAIL': '![#f03c15](https://placehold.co/5x1/f03c15/f03c15.png)',
+    'OK': '![#339900](https://placehold.co/5x5/339900/339900.png)',
+    'WARNING': '![#ec942c](https://placehold.co/5x5/ec942c/ec942c.png)',
+    'FAIL': '![#f03c15](https://placehold.co/5x5/f03c15/f03c15.png)',
 }
 
 nde_sparql = SPARQLWrapper('https://datasetregister.netwerkdigitaalerfgoed.nl/sparql')
@@ -44,7 +45,7 @@ try:
         status = STATE['FAIL']
 
     with open("README.md", "w") as f:
-        f.write(f'## Dashboard <br /> \n')
+        f.write(f'## Status <br /> \n')
         f.write(f'{status} [{datetime.now():%Y-%m-%d %H:%M.%S}] {set_count_nde}/{set_count_rce} datasets uit de datacatalog van de RCE beschikbaar op het NDE Datasetregister.  <br /> \n')
         
 except Exception as e:
