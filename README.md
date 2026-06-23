@@ -1,4 +1,2 @@
-## Dataset dashboard, status: OK ![#c5f015](https://placehold.co/15x15/c5f015/c5f015.png) <br /> 
-6 datasets op het NDE Datasetregister <br /> 
-6 datasets op de linked data voorziening van de RCE <br /> 
-Voor het laatst gecheckt om 2026-06-23 19:04.19 <br /> 
+## Dashboard <br /> 
+![#c5f015](https://placehold.co/5x5/c5f015/c5f015.png) [2026-06-23 19:53.27] 6/6 datasets uit de datacatalog van de RCE beschikbaar op het NDE Datasetregister.  <br /> 
