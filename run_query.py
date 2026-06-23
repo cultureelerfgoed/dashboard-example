@@ -50,7 +50,7 @@ try:
         f.write(f'## Dataset dashboard, status: {status} <br /> \n')
         f.write(f'{set_count_nde} datasets op het NDE Datasetregister <br /> \n')
         f.write(f'{set_count_rce} datasets op de linked data voorziening van de RCE <br /> \n')
-        f.write(f'Checked at {datetime.now()} <br /> \n')
+        f.write(f'Checked at {datetime.now():%Y-%m-%d %H:%M.%S} <br /> \n')
         
 except Exception as e:
     print(e)
