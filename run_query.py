@@ -35,8 +35,10 @@ rce_sparql.setQuery(
 
 try:
     # query and get results from json structure
+    print('getting data from nde sparql endpoint')
     nde_q = nde_sparql.queryAndConvert()
     set_count_nde = nde_q['results']['bindings'][0]['count']['value']
+    print('getting data from rce sparql endpoint')
     rce_q = rce_sparql.queryAndConvert()
     set_count_rce = rce_q['results']['bindings'][0]['count']['value']
 
