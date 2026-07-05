@@ -1,2 +1,2 @@
 ## Status <br /> 
-![#339900](https://placehold.co/5x5/339900/339900.png) [2026-07-03 17:13] <b>6/6</b> datasets uit de datacatalog van de RCE beschikbaar op het NDE Datasetregister.  <br /> 
+![#339900](https://placehold.co/5x5/339900/339900.png) [2026-07-05 16:46] <b>6/6</b> datasets uit de datacatalog van de RCE beschikbaar op het NDE Datasetregister.  <br /> 
